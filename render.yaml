@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: melon-calls-dashboard
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run CallAnalysisApp.py --server.headless true --server.address 0.0.0.0 --server.port $PORT --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MELON_APP_PASSWORD
+        sync: false
+      - key: MELON_CLIENT_ID
+        sync: false
+      - key: MELON_CLIENT_SECRET
+        sync: false
